@@ -42,7 +42,7 @@ export default async function AdminPage() {
     supabase.from("meme_prompt_chain_steps").select("*").order("created_at", { ascending: false }),
     supabase.from("llm_models").select("*").order("created_at", { ascending: false }),
     supabase.from("ai_generation_requests").select("*"),
-    supabase.from("terms").select("*"),
+    supabase.rpc("list_all_terms"),
     supabase.from("allowed_email_domains").select("*"),
     listBucketImages(supabase, "meme_photos"),
     listBucketImages(supabase, "user_meme_photos"),
